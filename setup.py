@@ -12,7 +12,7 @@ setup(
     version    = __version__,
     packages   = [
         'organized',
-    #    'organized.remotes'
+        'organized.importers'
     ],
 
     author       = "Paul Tagliamonte",
