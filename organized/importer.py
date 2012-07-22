@@ -8,7 +8,7 @@ import urllib
 import urllib2
 
 class Importer:
-    def __init(self, project):
+    def _init(self, project):
         self._project = project
 
 

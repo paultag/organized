@@ -3,12 +3,13 @@
 
 from organized.importer import Importer
 from organized.util import create_id, log
+import datetime as dt
 import SOAPpy
 
 url = 'http://bugs.debian.org/cgi-bin/soap.cgi'
 namespace = 'Debbugs/SOAP'
 server = SOAPpy.SOAPProxy(url, namespace)
-
+PREFIX = "bts"
 
 class BTS(Importer):
     def __init__(self, package, root_project):
@@ -16,15 +17,42 @@ class BTS(Importer):
             package
         ))
         self._package = package
-        self.__init(root_project)
+        self._init(root_project)
 
 
     def _import_bugs(self, *args):
         bugs = server.get_bugs(*args)
-        objs = server.get_status(bugs)['item']
+        print args, bugs
+        objs = server.get_status(bugs)
+        objs = objs['item']
+
         for bug in objs:
             bug = bug['value']
+            tags = bug['tags'].split()
+            if bug['pending'] != "":
+                tags.append("pending")
+
+            tags = [{'name': x} for x in tags]
+
+            bugobj = {
+                "_id": create_id(
+                    PREFIX,
+                    "bug",
+                    self._package,
+                    bug['bug_num']
+                ),
+                "tags": tags,
+                "body": "XXX: Fixme",
+                "title": bug['subject'],
+                "opened_at": dt.datetime.fromtimestamp(bug['date']),
+                "updated_at": dt.datetime.fromtimestamp(bug['last_modified']),
+                "url": "http://bugs.debian.org/%s" % (bug['bug_num'])
+            }
+            print bugobj
 
 
     def update(self):
-        self._import_bugs("package", self._package)
+        log("Getting open bugs")
+        self._import_bugs("package", self._package, "status", 'open')
+        #log("Getting done bugs")
+        #self._import_bugs("package", self._package, 'status', 'done')

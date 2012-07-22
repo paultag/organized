@@ -33,7 +33,7 @@ class GitHub(Importer):
         ))
         self._owner = owner
         self._project = project
-        self.__init(root_project)
+        self._init(root_project)
 
 
     def _get_json(self, url):
