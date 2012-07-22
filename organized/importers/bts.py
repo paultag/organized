@@ -33,7 +33,6 @@ class BTS(Importer):
                 tags.append("pending")
 
             tags = [{'name': x} for x in tags]
-
             bugobj = {
                 "_id": create_id(
                     PREFIX,
@@ -54,7 +53,7 @@ class BTS(Importer):
                 "reporter": {
                     "login": bug['originator']
                 },
-                "state": "closed" if bug['done'] == True else "open"
+                "state": "closed" if bug['done'] != "" else "open"
             }
             self.save_bug(bugobj)
 
@@ -62,5 +61,5 @@ class BTS(Importer):
     def update(self):
         log("Getting open bugs")
         self._import_bugs("package", self._package, "status", 'open')
-        #log("Getting done bugs")
-        #self._import_bugs("package", self._package, 'status', 'done')
+        log("Getting done bugs")
+        self._import_bugs("package", self._package, 'status', 'done')

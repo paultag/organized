@@ -1,8 +1,8 @@
 [
     {
         "args": [
-            "fluxbox",
-            "fluxbox"
+            "tcc",
+            "tcc"
         ],
         "type": "bts"
     }
