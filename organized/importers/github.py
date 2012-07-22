@@ -6,6 +6,8 @@ from organized.util import create_id, log
 
 import json
 
+API_BASE = "https://api.github.com"
+
 class GitHub(Importer):
     def __init__(self, owner, project):
         log("Created github instance. %s/%s" % (
@@ -14,18 +16,27 @@ class GitHub(Importer):
         self._owner = owner
         self._project = project
 
-    def _load_url(self, url):
-        pass
-
 
     def _get_json(self, url):
         payload = json.loads(self.load_url(url))
         return payload
 
 
-    def _get_issue_page(self, page):
+    def _get_issue_page(self, page, **kwargs):
         log("Getting page %s" % (page))
-        pass
+
+        kwargs.update({"page": page})
+
+        keyword_args = self.safe_urlencode(
+            kwargs
+        )
+        url = "%s/repos/%s/%s/issues?%s" % (
+            API_BASE,
+            self._owner,
+            self._project,
+            keyword_args
+        )
+        print url
 
 
     def _get_all_issues(self):
