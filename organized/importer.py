@@ -16,7 +16,7 @@ class Importer:
         bug.update({
             "_project": self._project
         })
-        log("Saving bug #%s" % (
+        log("Saving bug %s" % (
             bug['_id']
         ))
         ret = db.issues.update({"_id": bug['_id']},
