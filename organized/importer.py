@@ -19,7 +19,7 @@ class Importer:
         log("Saving bug %s" % (
             bug['_id']
         ))
-        ret = db.issues.update({"_id": bug['_id']},
+        ret = db.bugs.update({"_id": bug['_id']},
                          bug,
                          True,
                          safe=True)

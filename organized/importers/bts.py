@@ -22,7 +22,7 @@ class BTS(Importer):
 
     def _import_bugs(self, *args):
         bugs = server.get_bugs(*args)
-        print args, bugs
+        # print args, bugs
         objs = server.get_status(bugs)
         objs = objs['item']
 
@@ -46,9 +46,17 @@ class BTS(Importer):
                 "title": bug['subject'],
                 "opened_at": dt.datetime.fromtimestamp(bug['date']),
                 "updated_at": dt.datetime.fromtimestamp(bug['last_modified']),
-                "url": "http://bugs.debian.org/%s" % (bug['bug_num'])
+                "closed_at": "",
+                "url": "http://bugs.debian.org/%s" % (bug['bug_num']),
+                "owner": {
+                    "login": bug['owner'] if bug['owner'] != "" else None
+                },
+                "reporter": {
+                    "login": bug['originator']
+                },
+                "state": "closed" if bug['done'] == True else "open"
             }
-            print bugobj
+            self.save_bug(bugobj)
 
 
     def update(self):
