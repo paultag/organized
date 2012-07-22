@@ -2,6 +2,7 @@
 
 from organized.importers.github import GitHub
 from organized.importers.bts import BTS
+from organized.importers.launchpad import Launchpad
 
 import logging
 import json
@@ -9,7 +10,8 @@ import sys
 
 scrapers = {
     "bts": BTS,
-    "github": GitHub
+    "github": GitHub,
+    "launchpad": Launchpad
 }
 
 logging.basicConfig(level=logging.DEBUG)

@@ -1,9 +1,9 @@
 [
     {
         "args": [
-            "tcc",
-            "tcc"
+            "fluxbox",
+            "fluxbox"
         ],
-        "type": "bts"
+        "type": "launchpad"
     }
 ]
