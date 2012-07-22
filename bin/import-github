@@ -6,7 +6,7 @@ import sys
 
 logging.basicConfig(level=logging.DEBUG)
 
-user, repo = (sys.argv[1], sys.argv[2])
+user, repo, root_project = (sys.argv[1], sys.argv[2], sys.argv[3])
 
-gh = GitHub(user, repo)
+gh = GitHub(user, repo, root_project)
 gh.update()

@@ -27,12 +27,13 @@ def unmangle(obj, package):
 
 
 class GitHub(Importer):
-    def __init__(self, owner, project):
+    def __init__(self, owner, project, root_project):
         log("Created github instance. %s/%s" % (
             owner, project
         ))
         self._owner = owner
         self._project = project
+        self.__init(root_project)
 
 
     def _get_json(self, url):
