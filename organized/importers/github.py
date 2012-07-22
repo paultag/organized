@@ -3,10 +3,28 @@
 
 from organized.importer import Importer
 from organized.util import create_id, log
-
 import json
 
 API_BASE = "https://api.github.com"
+PREFIX = "github"
+
+def unmangle(obj, package):
+    issue_migration = {
+        "assignee": "owner",
+        "labels": "tags",
+        "user": "reporter"
+    }
+    for mig in issue_migration:
+        obj[issue_migration[mig]] = obj[mig]
+        del(obj[mig])
+    obj['_id'] = create_id(
+        PREFIX,
+        "bug",
+        package,
+        obj['number']
+    )
+    return obj
+
 
 class GitHub(Importer):
     def __init__(self, owner, project):
@@ -24,9 +42,7 @@ class GitHub(Importer):
 
     def _get_issue_page(self, page, **kwargs):
         log("Getting page %s" % (page))
-
         kwargs.update({"page": page})
-
         keyword_args = self.safe_urlencode(
             kwargs
         )
@@ -36,17 +52,29 @@ class GitHub(Importer):
             self._project,
             keyword_args
         )
-        print url
+        payload = self._get_json(url)
+        count = 0
+        for bug in payload:
+            bug = unmangle(bug, "%s_%s" % (
+                self._owner,
+                self._project
+            ))
+            self.save_bug(bug)
+            count += 1
+        return count
 
 
-    def _get_all_issues(self):
+    def _get_all_issues(self, **kwargs):
         log("Getting issues.")
         counter = 1
         numup = -1
         while numup != 0:
-            numup = self._get_issue_page(counter)
+            numup = self._get_issue_page(counter, **kwargs)
             counter += 1
 
 
     def update(self):
-        self._get_all_issues()
+        log("Getting open issues.")
+        self._get_all_issues(state='open')
+        log("Getting closed issues.")
+        self._get_all_issues(state='closed')

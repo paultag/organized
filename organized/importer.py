@@ -2,6 +2,7 @@
 # the terms and conditions of the Expat license
 
 from organized.db import db
+from organized.util import log
 
 import urllib
 import urllib2
@@ -12,9 +13,12 @@ class Importer:
 
 
     def save_bug(self, bug):
-        bug = bug.update({
+        bug.update({
             "_project": self._project
         })
+        log("Saving bug #%s" % (
+            bug['_id']
+        ))
         ret = db.issues.update({"_id": bug['_id']},
                          bug,
                          True,
