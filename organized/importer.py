@@ -3,6 +3,9 @@
 
 from organized.db import db
 
+import urllib
+import urllib2
+
 class Importer:
     def __init(self, project):
         self._project = project
@@ -17,3 +20,12 @@ class Importer:
                          True,
                          safe=True)
         return ret['n'] == 1
+
+
+    def load_url(self, url):
+        f = urllib2.urlopen(url)
+        return f.read()
+
+
+    def safe_urlencode(self, dic):
+        return urllib.urlencode(dic)

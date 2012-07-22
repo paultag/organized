@@ -4,6 +4,8 @@
 from organized.importer import Importer
 from organized.util import create_id, log
 
+import json
+
 class GitHub(Importer):
     def __init__(self, owner, project):
         log("Created github instance. %s/%s" % (
@@ -11,6 +13,14 @@ class GitHub(Importer):
         ))
         self._owner = owner
         self._project = project
+
+    def _load_url(self, url):
+        pass
+
+
+    def _get_json(self, url):
+        payload = json.loads(self.load_url(url))
+        return payload
 
 
     def _get_issue_page(self, page):
