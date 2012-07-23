@@ -45,7 +45,9 @@ class BTS(Importer):
                 "title": bug['subject'],
                 "opened_at": dt.datetime.fromtimestamp(bug['date']),
                 "updated_at": dt.datetime.fromtimestamp(bug['last_modified']),
-                "closed_at": "",
+                "closed_at": None if bug['done'] == "" \
+                    else dt.datetime.fromtimestamp(bug['last_modified']),
+                    # XXX: Dear jesus, fix the stuff above.
                 "url": "http://bugs.debian.org/%s" % (bug['bug_num']),
                 "owner": {
                     "login": bug['owner'] if bug['owner'] != "" else None
@@ -60,6 +62,8 @@ class BTS(Importer):
 
     def update(self):
         log("Getting open bugs")
-        self._import_bugs("package", self._package, "status", 'open')
+        self._import_bugs("package", self._package, "status", 'open',
+                          'archive', 'both')
         log("Getting done bugs")
-        self._import_bugs("package", self._package, 'status', 'done')
+        self._import_bugs("package", self._package, 'status', 'done',
+                          'archive', 'both')

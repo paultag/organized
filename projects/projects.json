@@ -4,6 +4,22 @@
             "fluxbox",
             "fluxbox"
         ],
-        "type": "launchpad"
+        "type": "bts"
+    },
+    {
+        "args": [
+            "sunlightlabs",
+            "openstates",
+            "openstates"
+        ],
+        "type": "github"
+    },
+    {
+        "args": [
+            "sunlightlabs",
+            "billy",
+            "billy"
+        ],
+        "type": "github"
     }
 ]
