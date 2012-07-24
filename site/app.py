@@ -32,11 +32,16 @@ def project(project=None):
         "state": "closed"
     }).sort("updated_at", -1)
 
+    milestones = db.milestones.find({
+        "project": project
+    }).sort("target_date", 1)
+
     return render_template('project.html', **{
         "project": probj,
         "bugs": bugs,
         "open_bugs": open_bugs,
         "closed_bugs": closed_bugs,
+        "milestones": milestones,
         "count": 10
     })
 

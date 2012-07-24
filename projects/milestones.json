@@ -1,9 +1,16 @@
 [
     {
+        "name": "Wheezy Pre",
+        "parent": "debian",
+        "project": "fluxbox",
+        "slug": "wheezy-pre",
+        "target_date": 1354233600
+    },
+    {
         "name": "Wheezy Release",
+        "parent": "debian",
         "project": "fluxbox",
         "slug": "wheezy",
-        "target_date": 1355270400,
-        "parent": "debian"
+        "target_date": 1356825600
     }
 ]

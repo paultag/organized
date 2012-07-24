@@ -11,6 +11,7 @@ logging.basicConfig(level=logging.DEBUG)
 obj = json.load(open(sys.argv[1], 'r'))
 for milestone in obj:
     project = milestone['project']
+    milestone['_project'] = milestone['project']
     slug = milestone['slug']
 
     objid = "%s-%s" % (project, slug)
@@ -19,7 +20,7 @@ for milestone in obj:
         "_id": objid
     })
 
-    update = db.projects.update(
+    update = db.milestones.update(
         {"_id": objid},
         milestone,
         True,  # Upsert
