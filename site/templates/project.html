@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block title %}{{project.name}}{% endblock %}
+
+{% block slug %}
+{{project.name}}
+{% endblock %}
+
 {% block main %}
 <h1>{{project.name}}</h1>
 <h2>Bug Digest</h2>
