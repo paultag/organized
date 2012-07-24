@@ -10,3 +10,11 @@
     width:         200px;
     float:         left;
 }
+
+a {
+    color:         #333333;
+}
+
+a:hover {
+    color:         #888888;
+}

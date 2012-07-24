@@ -20,17 +20,17 @@ def project(project=None):
 
     bugs = db.bugs.find({
         "_project": project
-    })
+    }).sort("updated_at", -1)
 
     open_bugs = db.bugs.find({
         "_project": project,
         "state": "open"
-    })
+    }).sort("updated_at", -1)
 
     closed_bugs = db.bugs.find({
         "_project": project,
         "state": "closed"
-    })
+    }).sort("updated_at", -1)
 
     return render_template('project.html', **{
         "project": probj,
