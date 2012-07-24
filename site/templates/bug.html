@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}{{bug.title}}{% endblock %}
+
+{% block slug %}
+bugview
+{% endblock %}
+
+{% block main %}
+    <h1>{{bug.title}}</h1>
+    <h2>{% if bug.state == 'open' %}Open{% else %}Closed{% endif %}</h2>
+    <a href = '{{bug.html_url}}' >source http</a>
+{% endblock %}

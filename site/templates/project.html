@@ -21,7 +21,7 @@ bugs, and <b>{{closed_bugs.count()}}</b> closed bugs.
     <h3>{{count}} latest closed bugs</h3>
     <ul>
 {% for bug in closed_bugs[:count] %}
-        <li><a href = '{{bug.html_url}}' >{{bug.title}}</a></li>
+        <li><a href = '/bug/{{bug._id}}' >{{bug.title}}</a></li>
 {% endfor %}
     </ul>
 </div>
@@ -30,7 +30,7 @@ bugs, and <b>{{closed_bugs.count()}}</b> closed bugs.
     <h3>{{count}} latest open bugs</h3>
     <ul>
 {% for bug in open_bugs[:count] %}
-        <li><a href = '{{bug.html_url}}' >{{bug.title}}</a></li>
+    <li><a href = '/bug/{{bug._id}}' >{{bug.title}}</a></li>
 {% endfor %}
     </ul>
 </div>

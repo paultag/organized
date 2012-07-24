@@ -12,6 +12,17 @@ def index():
     return render_template('index.html', **{})
 
 
+@app.route('/bug/<bugno>/')
+def bug(bugno=None):
+    bug = db.bugs.find_one({"_id": bugno})
+    if bug is None:
+        return redirect(url_for('index'))
+
+    return render_template('bug.html', **{
+        "bug": bug
+    })
+
+
 @app.route('/project/<project>/')
 def project(project=None):
     probj = db.projects.find_one({"_id": project})
