@@ -9,5 +9,8 @@ bugview
 {% block main %}
     <h1>{{bug.title}}</h1>
     <h2>{% if bug.state == 'open' %}Open{% else %}Closed{% endif %}</h2>
-    <a href = '{{bug.html_url}}' >source http</a>
+    <!-- <a href = '{{bug.html_url}}' >source http</a><br /> -->
+    {% for tag in bug.tags %}
+        <span class = 'tag' >{{tag.name}}</span>
+    {% endfor %}
 {% endblock %}

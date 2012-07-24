@@ -18,3 +18,12 @@ a {
 a:hover {
     color:         #888888;
 }
+
+span.tag {
+    background-color: #a7d660;
+    border:           1px solid #65813a;
+    color:            #000000;
+    font-weight:      bold;
+    padding:          5px;
+    border-radius:    5px;
+}
