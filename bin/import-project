@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from organized.db import db
+
 import logging
 import json
 import sys
@@ -7,5 +9,13 @@ import sys
 logging.basicConfig(level=logging.DEBUG)
 
 obj = json.load(open(sys.argv[1], 'r'))
-for scrape in obj:
-    pass
+for project in obj:
+    objid = project['name']
+    project.update({"_id": objid})
+    update = db.projects.update(
+        {"_id": objid},
+        project,
+        True,  # Upsert
+        safe=True
+    )
+    print "Updating %s" % (objid)
