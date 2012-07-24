@@ -1,1 +1,12 @@
+.spanner {
+    margin-bottom: 20px;
+}
 
+.clear {
+    clear:         both;
+}
+
+.third {
+    width:         200px;
+    float:         left;
+}

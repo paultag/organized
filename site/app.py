@@ -36,7 +36,8 @@ def project(project=None):
         "project": probj,
         "bugs": bugs,
         "open_bugs": open_bugs,
-        "closed_bugs": closed_bugs
+        "closed_bugs": closed_bugs,
+        "count": 10
     })
 
 

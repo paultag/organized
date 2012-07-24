@@ -14,4 +14,17 @@ This project has <b>{{bugs.count()}}</b> known bugs,
 <b>{{open_bugs.count()}}</b> open
 bugs, and <b>{{closed_bugs.count()}}</b> closed bugs.
 
+<div class = 'spanner' ></div>
+<div class = 'clear' ></div>
+
+<div class = 'third' >
+<ul>
+{% for bug in bugs[:count] %}
+<li><a href = '{{bug.url}}' >{{bug.title}}</a></li>
+{% endfor %}
+</ul>
+</div>
+
+<div class = 'clear' ></div>
+
 {% endblock %}

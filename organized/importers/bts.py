@@ -48,7 +48,7 @@ class BTS(Importer):
                 "closed_at": None if bug['done'] == "" \
                     else dt.datetime.fromtimestamp(bug['last_modified']),
                     # XXX: Dear jesus, fix the stuff above.
-                "url": "http://bugs.debian.org/%s" % (bug['bug_num']),
+                "html_url": "http://bugs.debian.org/%s" % (bug['bug_num']),
                 "owner": {
                     "login": bug['owner'] if bug['owner'] != "" else None
                 },
