@@ -18,8 +18,25 @@ def project(project=None):
     if probj is None:
         return redirect(url_for('index'))
 
+    bugs = db.bugs.find({
+        "_project": project
+    })
+
+    open_bugs = db.bugs.find({
+        "_project": project,
+        "state": "open"
+    })
+
+    closed_bugs = db.bugs.find({
+        "_project": project,
+        "state": "closed"
+    })
+
     return render_template('project.html', **{
-        "project": probj
+        "project": probj,
+        "bugs": bugs,
+        "open_bugs": open_bugs,
+        "closed_bugs": closed_bugs
     })
 
 

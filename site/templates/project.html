@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}{{project._id}}{% endblock %}
+{% block title %}{{project.name}}{% endblock %}
 {% block main %}
+<h1>{{project.name}}</h1>
+<h2>Bug Digest</h2>
+
+This project has {{bugs.count()}} known bugs, {{open_bugs.count()}} open
+bugs, and {{closed_bugs.count()}} closed bugs.
 
 {% endblock %}
