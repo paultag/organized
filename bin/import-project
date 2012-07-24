@@ -1,0 +1,11 @@
+#!/usr/bin/env python
+
+import logging
+import json
+import sys
+
+logging.basicConfig(level=logging.DEBUG)
+
+obj = json.load(open(sys.argv[1], 'r'))
+for scrape in obj:
+    pass

@@ -1,25 +1,17 @@
 [
     {
-        "args": [
-            "fluxbox",
-            "fluxbox"
-        ],
-        "type": "bts"
+        "name": "fluxbox",
+        "description": "Fluxbox is a windowmanager for X that was based on the Blackbox 0.61.1 code. It is very light on resources and easy to handle but yet full of features to make an easy, and extremely fast, desktop experience.",
+        "url": "http://fluxbox.org/"
     },
     {
-        "args": [
-            "sunlightlabs",
-            "openstates",
-            "openstates"
-        ],
-        "type": "github"
+        "name": "billy",
+        "description": "billy is a suite of tools developed as a part of Open States that provide a framework for scraping, storing, and sharing legislative information.",
+        "url": "https://github.com/sunlightlabs/billy"
     },
     {
-        "args": [
-            "sunlightlabs",
-            "billy",
-            "billy"
-        ],
-        "type": "github"
+        "name": "openstates",
+        "description": "The Open State Project collects and makes available data about state legislative activities, including bill summaries, votes, sponsorships and state legislator information.",
+        "url": "https://github.com/sunlightlabs/openstates"
     }
 ]
