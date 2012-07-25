@@ -1,0 +1,15 @@
+#!/usr/bin/make -f
+
+APP_ROOT= $(CURDIR)/debian/organized/srv/www
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	@echo "Dummy."
+
+override_dh_auto_build:
+	@echo "Dummy."
+
+override_dh_auto_install:
+	@echo "Dummy."

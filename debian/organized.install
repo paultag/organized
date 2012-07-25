@@ -1,0 +1,7 @@
+setup.py               srv/www/organized
+requirements.txt       srv/www/organized
+README.md              srv/www/organized
+site                   srv/www/organized
+bin                    srv/www/organized
+organized              srv/www/organized
+debian/uwsgi.ini       srv/www/organized

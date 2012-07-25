@@ -1,0 +1,18 @@
+Source: organized
+Section: web
+Priority: optional
+Maintainer: Paul Tagliamonte <paultag@debian.org>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.3
+Homepage: http://pault.ag/
+
+Package: organized
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends},
+ webapp-core
+Description: webapp core nonsense
+ Extra line to trick lintian.
+ Extra line to trick lintian.
+ Extra line to trick lintian.
+ Extra line to trick lintian.
+ Extra line to trick lintian.
