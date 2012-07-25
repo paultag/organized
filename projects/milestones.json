@@ -12,5 +12,15 @@
         "project": "fluxbox",
         "slug": "wheezy",
         "target_date": 1356825600
+    },
+    {
+        "name": "Soft-launch",
+        "parent": "sunlight",
+        "project": "billy",
+        "slug": "soft-launch",
+        "target_date": 1356825600,
+        "remote_milestones": [
+            "github-milestone-sunlightlabs_billy-1"
+        ]
     }
 ]
