@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}{{milestone.name}}{% endblock %}
+
+{% block slug %}
+{{milestone.name}}
+{% endblock %}
+
+{% block main %}
+<h1>{{milestone.name}}</h1>
+<h2>Stats</h2>
+{{milestone.name}} is a milestone for the
+<a href = '/project/{{project._id}}' >{{project.name}}</a> project.
+{% endblock %}

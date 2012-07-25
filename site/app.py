@@ -23,6 +23,20 @@ def bug(bugno=None):
     })
 
 
+@app.route('/milestone/<milestone>/')
+def milestone(milestone=None):
+    milestone = db.milestones.find_one({"_id": milestone})
+    if milestone is None:
+        return redirect(url_for('index'))
+    project = db.projects.find_one({"_id": milestone['project']})
+
+
+    return render_template('milestone.html', **{
+        "milestone": milestone,
+        "project": project
+    })
+
+
 @app.route('/project/<project>/')
 def project(project=None):
     probj = db.projects.find_one({"_id": project})

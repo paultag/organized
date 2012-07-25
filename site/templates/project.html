@@ -8,6 +8,10 @@
 
 {% block main %}
 <h1>{{project.name}}</h1>
+<h2>About {{project.name}}</h2>
+
+{{project.description}}
+
 <h2>Bug Digest</h2>
 
 This project has <b>{{bugs.count()}}</b> known bugs,
@@ -39,7 +43,7 @@ bugs, and <b>{{closed_bugs.count()}}</b> closed bugs.
     <h3>Active Milestones</h3>
     <ul>
 {% for milestone in milestones %}
-    <li>{{milestone.name}}</li>
+    <li><a href = '/milestone/{{milestone._id}}' >{{milestone.name}}</a></li>
 {% endfor %}
     </ul>
 </div>
