@@ -14,5 +14,6 @@ def create_id(prefix, klass, package, idno):
         idno
     )
 
+
 def log(message):
     logger.info(message)
