@@ -10,9 +10,10 @@ Package: organized
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends},
  webapp-core
-Description: webapp core nonsense
- Extra line to trick lintian.
- Extra line to trick lintian.
- Extra line to trick lintian.
- Extra line to trick lintian.
- Extra line to trick lintian.
+Description: webapp that drives org.anized
+ This app tracks bugs, issues and defects (but
+ treats them all the same) and shoves them all into
+ a single, normalized system.
+ .
+ This package is internal to Paul Tagliamonte's setup, please
+ don't use this unless you know what you're doing.
