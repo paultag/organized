@@ -13,4 +13,5 @@ bugview
     {% for tag in bug.tags %}
         <span class = 'tag' >{{tag.name}}</span>
     {% endfor %}
+    <pre class = 'sane' >{{bug.body}}</pre>
 {% endblock %}

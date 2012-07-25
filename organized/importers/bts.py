@@ -29,8 +29,9 @@ class BTS(Importer):
         for bug in objs:
             bug = bug['value']
             tags = bug['tags'].split()
-            if bug['pending'] != "":
-                tags.append("pending")
+
+            log = server.get_bug_log(bug['bug_num'])
+            body = log[0]['body'].decode("utf-8", 'ignore')
 
             tags = [{'name': x} for x in tags]
             bugobj = {
@@ -41,7 +42,7 @@ class BTS(Importer):
                     bug['bug_num']
                 ),
                 "tags": tags,
-                "body": "XXX: Fixme",
+                "body": body,
                 "title": bug['subject'],
                 "opened_at": dt.datetime.fromtimestamp(bug['date']),
                 "updated_at": dt.datetime.fromtimestamp(bug['last_modified']),
